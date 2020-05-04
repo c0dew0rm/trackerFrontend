@@ -1,1 +1,17 @@
-<p>map works!</p>
+<agm-map
+  [latitude]="latitude" 
+  [longitude]="longitude" 
+  [disableDefaultUI]="false"
+  [zoom]="zoom" >
+    <div class="stockholder-pins" *ngFor="let stockholder of stockholderList">
+      <agm-marker
+      [latitude]="stockholder.latitude" 
+      [longitude]= "stockholder.longitude"
+      >
+      <agm-info-window>
+        <p>{{ stockholder.name }}</p>
+        <button (click)="selectedStockholder(stockholder)">View Info</button>
+      </agm-info-window>
+    </agm-marker>
+    </div>
+  </agm-map>
