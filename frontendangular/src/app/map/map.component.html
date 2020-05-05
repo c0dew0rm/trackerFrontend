@@ -7,9 +7,17 @@
       <agm-marker
       [latitude]="stockholder.latitude" 
       [longitude]= "stockholder.longitude"
+      (mouseOver)="onMouseOver(infoWindow)"
+      (mouseOut)="onMouseOut(infoWindow)"
       >
-      <agm-info-window>
-        <p>{{ stockholder.name }}</p>
+      <agm-info-window [disableAutoPan]="false" #infoWindow>
+        <p><strong><u>{{ stockholder.name }}</u></strong></p>
+        <p><strong>Latitude:</strong>{{ stockholder.latitude }}, <strong>Longitude:</strong>{{ stockholder.longitude }}</p>
+        <p><strong>Phone number:</strong>{{ stockholder.phoneNumber}}</p>
+        <p><strong>Inventory Detail:-</strong></p>
+        <div class="inventory-detail" *ngFor="let inventory of stockholder.inventory; let i=index">
+          <p><strong>{{i+1}}. {{ inventory.product_name }}: </strong>{{ inventory.inventory }}</p>
+        </div>
         <button (click)="selectedStockholder(stockholder)">View Info</button>
       </agm-info-window>
     </agm-marker>

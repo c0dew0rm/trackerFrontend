@@ -29,4 +29,12 @@ export class MapComponent implements OnInit {
     console.log(stockholder);
   }
 
+  onMouseOver(infoWindow,) {
+    infoWindow.open();
+  }
+
+  onMouseOut(infoWindow) {
+    infoWindow.close();
+  }
+
 }
